@@ -19,9 +19,9 @@ public class Member {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String name;
-
     @Column(unique = true)
+    private String name;
+    
     private String email;
 
     private String password;
