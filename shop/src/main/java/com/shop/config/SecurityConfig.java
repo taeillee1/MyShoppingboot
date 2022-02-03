@@ -33,6 +33,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutRequestMatcher(new AntPathRequestMatcher("/members/logout"))
                 .logoutSuccessUrl("/")
         ;
+        http.authorizeRequests()
+                .mvcMatchers("/","/members/**","/item/**","/images/**").permitAll() //여기서 설정한 주소는 인증없이 이용가능
+                .mvcMatchers("/admin/**").hasRole("ADMIN") //주소앞에 어드민이 들어가있으면 ADMIN권한을 가져야함
+                .anyRequest().authenticated() //그 외에는 인증요구
+        ;
+        http.exceptionHandling()
+                .authenticationEntryPoint(new CheckAdmin());
     }
 
     @Bean
@@ -44,6 +51,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(memberService)
                 .passwordEncoder(passwordEncoder());
+    }
+
+    @Override
+    public void configure(WebSecurity web) throws Exception{
+        web.ignoring().antMatchers("/css/**","/js/**","/img/**");
     }
 
 
