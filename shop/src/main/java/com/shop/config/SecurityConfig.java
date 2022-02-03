@@ -26,7 +26,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.formLogin()
                 .loginPage("/members/login")
                 .defaultSuccessUrl("/")
-                .usernameParameter("email")
+                .usernameParameter("email")//로그인시 사용할 파라미터
                 .failureUrl("/members/login/error")
                 .and()
                 .logout()
