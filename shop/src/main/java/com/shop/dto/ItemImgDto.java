@@ -21,7 +21,7 @@ public class ItemImgDto {
     private static ModelMapper modelMapper = new ModelMapper();
 
     public static ItemImgDto of(ItemImg itemImg) {
-        return modelMapper.map(itemImg,ItemImgDto.class); //객체의 자료형과 맴버변수의 이름이 같을때 ItemImgDto 객체를 생성하지 않아도 호춝능하게 함
+        return modelMapper.map(itemImg,ItemImgDto.class); //객체의 자료형과 맴버변수의 이름이 같을때 ItemImgDto 객체를 생성하지 않아도 호출가능하게 함
     }
 
 }
