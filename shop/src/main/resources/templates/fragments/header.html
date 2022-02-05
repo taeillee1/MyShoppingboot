@@ -33,10 +33,13 @@
                     <a class="nav-link" href="/members/login">로그인</a>
                 </li>
                 <li class="nav-item" sec:authorize="isAuthenticated()">
+                    <!-- isAuthenticated 어떤 권한이던 상관없이 인증된사람이면 나옴-->
                     <a class="nav-link" href="/members/logout">로그아웃</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0" th:action="@{/}" method="get">
+<!--                <span sec:authentication="name" class="text-white">사용자</span>-->
+<!--                <span sec:authentication="principal.username" class="text-black">사용자</span>-->
                 <input name="searchQuery" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
