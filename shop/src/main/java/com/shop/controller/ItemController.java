@@ -1,5 +1,6 @@
 package com.shop.controller;
 
+import com.shop.dto.ItemDto;
 import com.shop.dto.ItemFormDto;
 import com.shop.dto.ItemSearchDto;
 import com.shop.entity.Item;
@@ -105,6 +106,13 @@ public class ItemController {
         model.addAttribute("maxPage", 5);
 
         return "item/itemMng";
+    }
+
+    @GetMapping("/item/{itemId}")
+    public String itemDtl0(Model model,@PathVariable("itemId") Long itemId){
+        ItemFormDto itemFormDto = itemService.getItemDtl(itemId);
+        model.addAttribute("item",itemFormDto);
+        return "item/itemDtl";
     }
 
 }
