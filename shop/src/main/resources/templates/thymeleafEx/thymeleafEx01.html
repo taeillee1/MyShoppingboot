@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>title</title>
+    <!-- Bootstrap cdn 설정 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div style="margin:20px;">
+    <!-- 이벤트를 확인하기 위한 dropdown 컨트럴 -->
+    <!-- 이벤트는 event-dropdown 클래스로 걸었다. -->
+    <div class="dropdown event-dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            Test
+            <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+            <li><a href="#">Sub Test1</a></li>
+            <li><a href="#">Sub Test2</a></li>
+        </ul>
+    </div>
+    <textarea readonly id="console" style="resize:none;font-size:10px;width:150px;height:150px;margin-top:100px;"></textarea>
+</div>
+<script>
+// 위 textarea로 결과를 확인한다.
+var consoleArea = document.getElementById("console");
+// 로그 함수
+consoleArea.log = function(msg) {
+consoleArea.value += msg + "\n";
+}
+// dropdown 메뉴가 보이기 직전에 호출되는 이벤트
+$('.event-dropdown').on('show.bs.dropdown', function () {
+consoleArea.log("메뉴가 열리기 전 이벤트!");
+});
+// dropdown 메뉴가 보이기 직후에 호출되는 이벤트
+$('.event-dropdown').on('shown.bs.dropdown', function () {
+consoleArea.log("메뉴가 열린 후 이벤트!");
+});
+// dropdown 메뉴가 사라지기 직전에 호출되는 이벤트
+$('.event-dropdown').on('hide.bs.dropdown', function () {
+consoleArea.log("메뉴가 닫히기 전 이벤트!");
+});
+// dropdown 메뉴가 사라진 직후에 호출되는 이벤트
+$('.event-dropdown').on('hidden.bs.dropdown ', function () {
+consoleArea.log("메뉴가 닫힌 후 이벤트!");
+});
+</script>
+</body>
+</html>
+
+
